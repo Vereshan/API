@@ -16,19 +16,20 @@ namespace ReportAPI.Controllers
 
         public ReportController()
         {
-            // Get the path to the Firebase credentials from the environment variable
-            string jsonFilePath = Environment.GetEnvironmentVariable("FIRESTORE_CREDENTIALS_PATH");
-            if (string.IsNullOrEmpty(jsonFilePath))
+            // Get the Google credentials from the environment variable
+            var credentialsPath = Environment.GetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS");
+
+            if (string.IsNullOrEmpty(credentialsPath))
             {
-                throw new InvalidOperationException("The environment variable FIRESTORE_CREDENTIALS_PATH is not set.");
+                throw new InvalidOperationException("Google credentials not found in environment variables.");
             }
 
-            // Initialize FirebaseApp only if it's not already initialized
+            // Initialize FirebaseApp if it's not already initialized
             if (FirebaseApp.DefaultInstance == null)
             {
                 FirebaseApp.Create(new AppOptions
                 {
-                    Credential = GoogleCredential.FromFile(jsonFilePath)
+                    Credential = GoogleCredential.FromFile(credentialsPath)
                 });
             }
 
@@ -68,9 +69,9 @@ namespace ReportAPI.Controllers
             }
 
             var documentReference = await _firestoreDb.Collection("reports").AddAsync(report);
-            report.Id = documentReference.Id; // Set the ID from Firestore document
+            report.Id = documentReference.Id;
 
-            return CreatedAtAction(nameof(Get), new { id = report.Id }, report); // Return 201 Created
+            return CreatedAtAction(nameof(Get), new { id = report.Id }, report);
         }
     }
 }

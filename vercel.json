@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "Dockerfile",
+      "use": "@vercel/docker"
+    }
+  ],
+  "env": {
+    "FIRESTORE_CREDENTIALS_PATH": "/app/path/to/your/credentials.json"
+  }
+}

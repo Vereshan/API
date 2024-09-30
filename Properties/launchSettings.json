@@ -5,7 +5,8 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "GOOGLE_APPLICATION_CREDENTIALS": "C:\\Users\\veron\\Dropbox\\Varsity Files\\Semester 6\\Open source Intermediate\\APIPan!k\\API\\Json FIle\\pan-k-f6477-firebase-adminsdk-ifh4z-62991c9e5a.json"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5243"
@@ -15,7 +16,8 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "GOOGLE_APPLICATION_CREDENTIALS": "C:\\Users\\veron\\Dropbox\\Varsity Files\\Semester 6\\Open source Intermediate\\APIPan!k\\API\\Json FIle\\pan-k-f6477-firebase-adminsdk-ifh4z-62991c9e5a.json"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7265;http://localhost:5243"
@@ -25,7 +27,8 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "GOOGLE_APPLICATION_CREDENTIALS": "C:\\Users\\veron\\Dropbox\\Varsity Files\\Semester 6\\Open source Intermediate\\APIPan!k\\API\\Json FIle\\pan-k-f6477-firebase-adminsdk-ifh4z-62991c9e5a.json"
       }
     },
     "Docker": {
@@ -34,7 +37,8 @@
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
       "environmentVariables": {
         "ASPNETCORE_HTTPS_PORTS": "8081",
-        "ASPNETCORE_HTTP_PORTS": "8080"
+        "ASPNETCORE_HTTP_PORTS": "8080",
+        "GOOGLE_APPLICATION_CREDENTIALS": "C:\\Users\\veron\\Dropbox\\Varsity Files\\Semester 6\\Open source Intermediate\\APIPan!k\\API\\Json FIle\\pan-k-f6477-firebase-adminsdk-ifh4z-62991c9e5a.json"
       },
       "publishAllPorts": true,
       "useSSL": true
