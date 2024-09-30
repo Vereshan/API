@@ -67,6 +67,7 @@ namespace ReportAPI.Controllers
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"Error: {ex.Message}");
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
