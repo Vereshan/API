@@ -8,10 +8,6 @@ EXPOSE 8080
 # Expose another port if needed (optional)
 EXPOSE 8081
 
-# Add a non-root user for security
-RUN adduser --disabled-password --gecos "" appuser && chown -R appuser /app
-USER appuser
-
 # Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0-nanoserver-1809 AS build
 ARG BUILD_CONFIGURATION=Release
