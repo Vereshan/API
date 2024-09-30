@@ -37,13 +37,20 @@ namespace ReportAPI.Controllers
             _firestoreDb = FirestoreDb.Create("pan-k-f6477");
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Report>>> Get()
+        [HttpGet("{userId}")]
+        public async Task<ActionResult<IEnumerable<Report>>> Get(string userId)
         {
             try
             {
+                if (string.IsNullOrEmpty(userId))
+                {
+                    return BadRequest("User ID cannot be null or empty.");
+                }
+
                 var reports = new List<Report>();
-                var snapshot = await _firestoreDb.Collection("reports").GetSnapshotAsync();
+                var snapshot = await _firestoreDb.Collection("reports")
+                                                .WhereEqualTo("userId", userId)
+                                                .GetSnapshotAsync();
 
                 foreach (var document in snapshot.Documents)
                 {
@@ -59,6 +66,8 @@ namespace ReportAPI.Controllers
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
+    
+
 
         [HttpPost]
         public async Task<ActionResult<Report>> Post([FromBody] Report report)
