@@ -1,8 +1,12 @@
 # Base image for ASP.NET Core
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-1809 AS base
 WORKDIR /app
-EXPOSE 8080 # Expose the HTTP port
-EXPOSE 8081 # Expose another port if needed (optional)
+
+# Expose the HTTP port
+EXPOSE 8080
+
+# Expose another port if needed (optional)
+EXPOSE 8081
 
 # Add a non-root user for security
 RUN adduser --disabled-password --gecos "" appuser && chown -R appuser /app
