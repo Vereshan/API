@@ -1,5 +1,5 @@
 # Base image for ASP.NET Core
-FROM mcr.microsoft.com/dotnet/aspnet:8.0-nanoserver-1809 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
 
 # Expose the HTTP port
@@ -9,7 +9,7 @@ EXPOSE 8080
 EXPOSE 8081
 
 # Build stage
-FROM mcr.microsoft.com/dotnet/sdk:8.0-nanoserver-1809 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
@@ -38,7 +38,7 @@ WORKDIR /app
 # Copy the published output from the publish stage
 COPY --from=publish /app/publish .
 
-# Set environment variable for Firestore credentials (this assumes the credentials file is passed securely)
+# Set environment variable for Firestore credentials
 ENV GOOGLE_APPLICATION_CREDENTIALS=/app/credentials.json
 
 # Add a health check to ensure the app is running
