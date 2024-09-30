@@ -3,13 +3,13 @@ using Google.Cloud.Location;
 
 namespace ReportAPI.Models
 {
-    [FirestoreData] //Suggested by CHatgpt
+    [FirestoreData]
     public class Report
     {
-        [FirestoreProperty] // Suggested by ChatGPT to fix serialization issues with Firestore
-        public string Id { get; set; } 
+        [FirestoreProperty]
+        public string Id { get; set; }
 
-        [FirestoreProperty] 
+        [FirestoreProperty]
         public string description { get; set; }
 
         [FirestoreProperty]
@@ -18,20 +18,24 @@ namespace ReportAPI.Models
         [FirestoreProperty]
         public string imageUrl { get; set; }
 
-        [FirestoreProperty] 
+        [FirestoreProperty]
         public long timestamp { get; set; }
+
         [FirestoreProperty]
         public string title { get; set; }
-        [FirestoreProperty]
-        public string userId { get; set; }   
-        
-        public Report() 
-        {
-        }
-        //References:
-        //OpenAI. (2024). ChatGPT Conversation on API Development. Available at: https://www.openai.com (Accessed: 25 September 2024).
-    }
-  
-  
 
+        [FirestoreProperty]
+        public string userId { get; set; }
+
+        public Report()
+        {
+            Id = string.Empty;
+            description = string.Empty;
+            location = new GeoPoint(0, 0); // Initialize with default values
+            imageUrl = string.Empty;
+            timestamp = 0;
+            title = string.Empty;
+            userId = string.Empty;
+        }
+    }
 }
