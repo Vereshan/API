@@ -18,14 +18,14 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
 # Copy the csproj file and restore dependencies
-COPY ["API/API.csproj", "API/"]
-RUN dotnet restore "API/API.csproj"
+COPY ["API.csproj", "./"]
+RUN dotnet restore "API.csproj"
 
 # Copy the entire API folder to the image
 COPY . .
 
 # Build the API
-WORKDIR "/src/API"
+WORKDIR "/src"
 RUN dotnet build "API.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # Publish stage
