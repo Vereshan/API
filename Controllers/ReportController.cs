@@ -47,10 +47,14 @@ namespace ReportAPI.Controllers
                     return BadRequest("User ID cannot be null or empty.");
                 }
 
+                Console.WriteLine($"Querying reports for userId: {userId}");
+
                 var reports = new List<Report>();
                 var snapshot = await _firestoreDb.Collection("reports")
                                                 .WhereEqualTo("userId", userId)
                                                 .GetSnapshotAsync();
+
+                Console.WriteLine($"Number of documents found: {snapshot.Documents.Count}");
 
                 foreach (var document in snapshot.Documents)
                 {
@@ -66,7 +70,8 @@ namespace ReportAPI.Controllers
                 return StatusCode(500, "Internal server error: " + ex.Message);
             }
         }
-    
+
+
 
 
         [HttpPost]
